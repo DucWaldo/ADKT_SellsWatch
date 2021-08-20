@@ -42,7 +42,8 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Login
 
         public bool accountAdmin(TextBox US, TextBox PW)
         {
-            if (US.Text == "Admin@manager.com" || PW.Text == "0brPmd1avIEUMF/1we1mrQ==")
+            string temp = EncryptAndDecrypt.EncryptData(PW.Text);
+            if (US.Text == "Admin@manager.com" && temp == "0brPmd1avIEUMF/1we1mrQ==")
             {
                 return true;
             }

@@ -91,35 +91,35 @@ namespace ADKT_SellsWatch.Forms_Code.Form_WatchManager
 
         public void CellLick(int R, int C, DataGridView dgvWatch, TextBox txtWatchID, TextBox txtWatchName, RadioButton rbtMale, RadioButton rbtFemale, TextBox txtGlass, TextBox txtWaterproof, TextBox txtStrap, TextBox txtPrice, ComboBox cbbBrandName, NumericUpDown nudNumOfItem)
         {
-            if (dgvWatch.Rows[R].Cells[C].Value != null)
-            {
-                dgvWatch.CurrentRow.Selected = true;
-                txtWatchID.Text = dgvWatch.Rows[R].Cells["clnWatchID"].FormattedValue.ToString();
-                txtWatchName.Text = dgvWatch.Rows[R].Cells["clnWatchName"].FormattedValue.ToString();
-                if (dgvWatch.Rows[R].Cells["clnGender"].FormattedValue.ToString() == "Nam")
+                if (dgvWatch.Rows[R].Cells[C].Value != null)
                 {
-                    rbtMale.Checked = true;
+                    dgvWatch.CurrentRow.Selected = true;
+                    txtWatchID.Text = dgvWatch.Rows[R].Cells["clnWatchID"].FormattedValue.ToString();
+                    txtWatchName.Text = dgvWatch.Rows[R].Cells["clnWatchName"].FormattedValue.ToString();
+                    if (dgvWatch.Rows[R].Cells["clnGender"].FormattedValue.ToString() == "Nam")
+                    {
+                        rbtMale.Checked = true;
+                    }
+                    else
+                    {
+                        rbtFemale.Checked = true;
+                    }
+                    txtGlass.Text = dgvWatch.Rows[R].Cells["clnGlass"].FormattedValue.ToString();
+                    txtWaterproof.Text = dgvWatch.Rows[R].Cells["clnWaterproof"].FormattedValue.ToString();
+                    txtStrap.Text = dgvWatch.Rows[R].Cells["clnStrap"].FormattedValue.ToString();
+                    txtPrice.Text = dgvWatch.Rows[R].Cells["clnPrice"].FormattedValue.ToString();
+                    cbbBrandName.Text = dgvWatch.Rows[R].Cells["clnBrand"].FormattedValue.ToString();
+                    nudNumOfItem.Value = int.Parse(dgvWatch.Rows[R].Cells["clnNumberOfItem"].FormattedValue.ToString());
                 }
-                else
-                {
-                    rbtFemale.Checked = true;
-                }
-                txtGlass.Text = dgvWatch.Rows[R].Cells["clnGlass"].FormattedValue.ToString();
-                txtWaterproof.Text = dgvWatch.Rows[R].Cells["clnWaterproof"].FormattedValue.ToString();
-                txtStrap.Text = dgvWatch.Rows[R].Cells["clnStrap"].FormattedValue.ToString();
-                txtPrice.Text = dgvWatch.Rows[R].Cells["clnPrice"].FormattedValue.ToString();
-                cbbBrandName.Text = dgvWatch.Rows[R].Cells["clnBrand"].FormattedValue.ToString();
-                nudNumOfItem.Value = int.Parse(dgvWatch.Rows[R].Cells["clnNumberOfItem"].FormattedValue.ToString());
-            }
         }
 
-        public void Update(TextBox txtWatchID, TextBox txtWatchName, RadioButton rbtMale, RadioButton rbtFemale, TextBox txtGlass, TextBox txtWaterproof, TextBox txtStrap, TextBox txtPrice, ComboBox cbbBrandName, NumericUpDown nudNumOfItem)
+        public void Update(TextBox txtWatchID, TextBox txtWatchName, RadioButton rbtMale, RadioButton rbtFemale, TextBox txtGlass, TextBox txtWaterproof, TextBox txtStrap, TextBox txtPrice, ComboBox cbbBrandName, NumericUpDown nudNumOfItem, Panel pnlInput)
         {
             _dbContext.Watches.AddOrUpdate(watch(txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem));
             _dbContext.SaveChanges();
         }
 
-        public void Delete(TextBox txtWatchID)
+        public void Delete(TextBox txtWatchID, Panel pnlInput)
         {
             Watch watch = _dbContext.Watches.FirstOrDefault(w => w.WatchID == txtWatchID.Text);
 
@@ -132,6 +132,43 @@ namespace ADKT_SellsWatch.Forms_Code.Form_WatchManager
             {
                 throw new Exception("Không tìm thấy đồng hồ này!");
             }
+        }
+
+        public void Search(string infoSearch, DataGridView dgvWatch)
+        {
+            List<Watch> searchList = _dbContext.Watches.Where(p => p.WatchID.Contains(infoSearch) == true || p.Brand.BrandName.Contains(infoSearch) == true).ToList();
+
+            if (searchList.Count > -1)
+            {
+                dgvWatch.Rows.Clear();
+                foreach (var item in searchList)
+                {
+                    int index = dgvWatch.Rows.Add();
+                    dgvWatch.Rows[index].Cells[0].Value = item.WatchID;
+                    dgvWatch.Rows[index].Cells[1].Value = item.WatchName;
+                    if (item.Gender == false)
+                    {
+                        dgvWatch.Rows[index].Cells[2].Value = "Nam";
+                    }
+                    else
+                    {
+                        dgvWatch.Rows[index].Cells[2].Value = "Nữ";
+                    }
+                    dgvWatch.Rows[index].Cells[3].Value = item.Glass;
+                    dgvWatch.Rows[index].Cells[4].Value = item.Waterproof;
+                    dgvWatch.Rows[index].Cells[5].Value = item.Strap;
+                    dgvWatch.Rows[index].Cells[6].Value = item.Price;
+                    dgvWatch.Rows[index].Cells[7].Value = item.Brand.BrandName;
+                    dgvWatch.Rows[index].Cells[8].Value = item.NumOfItem;
+                }
+            }
+        }
+
+        public void Reset(TextBox txtWatchID, TextBox txtWatchName, RadioButton rbtMale, RadioButton rbtFemale, TextBox txtGlass, TextBox txtWaterproof, TextBox txtStrap, TextBox txtPrice, NumericUpDown nudNumOfItem, TextBox txtSearch)
+        {
+            txtWatchID.Text = txtWatchName.Text = txtGlass.Text = txtWaterproof.Text = txtStrap.Text = txtPrice.Text = txtSearch.Text = string.Empty;
+            rbtFemale.Checked = rbtMale.Checked = false;
+            nudNumOfItem.Value = 0;
         }
     }
 }

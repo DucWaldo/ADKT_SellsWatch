@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ADKT_SellsWatch.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,10 @@ namespace ADKT_SellsWatch.Forms_Code.Form_WatchManager
         {
             try
             {
-                acWatchManagers.CellLick(R, C, dgvWatch, txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem);
+                if (R > -1 && C > -1)
+                {
+                    acWatchManagers.CellLick(R, C, dgvWatch, txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem);
+                }
             }
             catch (Exception ex)
             {
@@ -35,13 +39,13 @@ namespace ADKT_SellsWatch.Forms_Code.Form_WatchManager
             }
         }
 
-        public void Update_Click(DataGridView dgvWatch, TextBox txtWatchID, TextBox txtWatchName, RadioButton rbtMale, RadioButton rbtFemale, TextBox txtGlass, TextBox txtWaterproof, TextBox txtStrap, TextBox txtPrice, ComboBox cbbBrandName, NumericUpDown nudNumOfItem)
+        public void Update_Click(DataGridView dgvWatch, TextBox txtWatchID, TextBox txtWatchName, RadioButton rbtMale, RadioButton rbtFemale, TextBox txtGlass, TextBox txtWaterproof, TextBox txtStrap, TextBox txtPrice, ComboBox cbbBrandName, NumericUpDown nudNumOfItem, Panel pnlInput)
         {
             try
             {
                 if (MessageBox.Show("Bạn có muốn thêm đồng hồ này không", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    acWatchManagers.Update(txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem);
+                    acWatchManagers.Update(txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem, pnlInput);
                     acWatchManagers.BindGrid(dgvWatch);
                     throw new Exception("Thêm thành công!");
                 }
@@ -53,13 +57,13 @@ namespace ADKT_SellsWatch.Forms_Code.Form_WatchManager
             }
         }
 
-        public void Delete_Click(DataGridView dgvWatch, TextBox txtWatchID)
+        public void Delete_Click(DataGridView dgvWatch, TextBox txtWatchID, Panel pnlInput)
         {
             try
             {
                 if (MessageBox.Show("Bạn có muốn xoá đồng hồ này không", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    acWatchManagers.Delete(txtWatchID);
+                    acWatchManagers.Delete(txtWatchID, pnlInput);
                     acWatchManagers.BindGrid(dgvWatch);
                     throw new Exception("Đã xoá thành công!");
                 }
@@ -69,6 +73,17 @@ namespace ADKT_SellsWatch.Forms_Code.Form_WatchManager
 
                 MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK);
             }
+        }
+
+        public void Search_TextChanged(string infoSearch, DataGridView dgvWatch)
+        {
+            acWatchManagers.Search(infoSearch, dgvWatch);
+        }
+
+        public void Reset_Click(DataGridView dgvWatch, ComboBox cbbBrand, TextBox txtWatchID, TextBox txtWatchName, RadioButton rbtMale, RadioButton rbtFemale, TextBox txtGlass, TextBox txtWaterproof, TextBox txtStrap, TextBox txtPrice, NumericUpDown nudNumOfItem, TextBox txtSearch)
+        {
+            acWatchManagers.Reset(txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, nudNumOfItem, txtSearch);
+            WatchManager_Load(dgvWatch, cbbBrand);
         }
     }
 }

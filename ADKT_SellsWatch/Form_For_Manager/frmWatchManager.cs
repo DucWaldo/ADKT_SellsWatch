@@ -31,12 +31,24 @@ namespace ADKT_SellsWatch.Form_For_Manager
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            cWatchManagers.Update_Click(dgvWatch, txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem);
+            cWatchManagers.Update_Click(dgvWatch, txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem, pnlInput);
+            this.btnReset_Click(sender, e);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            cWatchManagers.Delete_Click(dgvWatch, txtWatchID);
+            cWatchManagers.Delete_Click(dgvWatch, txtWatchID, pnlInput);
+            this.btnReset_Click(sender, e);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            cWatchManagers.Search_TextChanged(txtSearch.Text, dgvWatch);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            cWatchManagers.Reset_Click(dgvWatch, cbbBrandName, txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, nudNumOfItem, txtSearch);
         }
     }
 }

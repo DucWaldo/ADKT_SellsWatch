@@ -30,9 +30,9 @@ namespace ADKT_SellsWatch.Form_For_Manager
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pnlInput = new System.Windows.Forms.Panel();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.nudNumOfItem = new System.Windows.Forms.NumericUpDown();
@@ -69,7 +69,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.clnBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnNumberOfItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.pnlInput.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumOfItem)).BeginInit();
@@ -89,7 +89,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.pnlInput);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -97,46 +97,47 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.panel2.Size = new System.Drawing.Size(1428, 319);
             this.panel2.TabIndex = 0;
             // 
-            // panel4
+            // pnlInput
             // 
-            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel4.Controls.Add(this.groupBox11);
-            this.panel4.Controls.Add(this.groupBox10);
-            this.panel4.Controls.Add(this.groupBox9);
-            this.panel4.Controls.Add(this.groupBox8);
-            this.panel4.Controls.Add(this.groupBox7);
-            this.panel4.Controls.Add(this.groupBox6);
-            this.panel4.Controls.Add(this.groupBox5);
-            this.panel4.Controls.Add(this.groupBox4);
-            this.panel4.Controls.Add(this.groupBox3);
-            this.panel4.Controls.Add(this.groupBox2);
-            this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1219, 313);
-            this.panel4.TabIndex = 1;
+            this.pnlInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlInput.Controls.Add(this.groupBox11);
+            this.pnlInput.Controls.Add(this.groupBox10);
+            this.pnlInput.Controls.Add(this.groupBox9);
+            this.pnlInput.Controls.Add(this.groupBox8);
+            this.pnlInput.Controls.Add(this.groupBox7);
+            this.pnlInput.Controls.Add(this.groupBox6);
+            this.pnlInput.Controls.Add(this.groupBox5);
+            this.pnlInput.Controls.Add(this.groupBox4);
+            this.pnlInput.Controls.Add(this.groupBox3);
+            this.pnlInput.Controls.Add(this.groupBox2);
+            this.pnlInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlInput.Location = new System.Drawing.Point(3, 3);
+            this.pnlInput.Name = "pnlInput";
+            this.pnlInput.Size = new System.Drawing.Size(1219, 313);
+            this.pnlInput.TabIndex = 1;
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.btnSearch);
+            this.groupBox11.Controls.Add(this.btnReset);
             this.groupBox11.Controls.Add(this.txtSearch);
             this.groupBox11.Location = new System.Drawing.Point(6, 249);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(551, 61);
             this.groupBox11.TabIndex = 3;
             this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Tìm kiếm";
+            this.groupBox11.Text = "Tìm kiếm theo mã hoặc thương hiệu";
             // 
-            // btnSearch
+            // btnReset
             // 
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(405, 25);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(143, 33);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Tìm kiếm";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnReset.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(405, 25);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(143, 33);
+            this.btnReset.TabIndex = 2;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // txtSearch
             // 
@@ -144,6 +145,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(397, 29);
             this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // groupBox10
             // 
@@ -406,9 +408,12 @@ namespace ADKT_SellsWatch.Form_For_Manager
             // 
             // clnWatchID
             // 
+            this.clnWatchID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.clnWatchID.Frozen = true;
             this.clnWatchID.HeaderText = "Mã đồng hồ";
             this.clnWatchID.Name = "clnWatchID";
             this.clnWatchID.ReadOnly = true;
+            this.clnWatchID.Width = 153;
             // 
             // clnWatchName
             // 
@@ -461,7 +466,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmWatchManager_Load);
             this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
+            this.pnlInput.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -492,7 +497,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel pnlInput;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
@@ -500,7 +505,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
         private System.Windows.Forms.DataGridView dgvWatch;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.NumericUpDown nudNumOfItem;
