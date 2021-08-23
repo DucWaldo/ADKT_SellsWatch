@@ -16,8 +16,8 @@ namespace ADKT_SellsWatch.Models
         }
 
         [Key]
-        [StringLength(11)]
-        public string CustomerPhone { get; set; }
+        [StringLength(15)]
+        public string CustomerID { get; set; }
 
         [StringLength(50)]
         public string CustomerName { get; set; }
@@ -25,13 +25,12 @@ namespace ADKT_SellsWatch.Models
         [Column(TypeName = "date")]
         public DateTime? BirthDay { get; set; }
 
-        [StringLength(10)]
-        public string Genner { get; set; }
+        public bool? Genner { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? CardDay { get; set; }
 
-        public int? NumOfOrder { get; set; }
+        public int? Phone { get; set; }
 
         public int? RankID { get; set; }
 

@@ -34,19 +34,14 @@ namespace ADKT_SellsWatch.Form_For_Manager
             CC.OpenChildForm(new frmCustomerManager(), pnlContent, pnlLeft, btnCustomer);
         }
 
-        private void btnBrand_Click(object sender, EventArgs e)
+        private void btnOther_Click(object sender, EventArgs e)
         {
-            CC.OpenChildForm(new frmBrandManager(), pnlContent, pnlLeft, btnBrand);
+            CC.OpenChildForm(new frmOtherManager(), pnlContent, pnlLeft, btnOther);
         }
 
         private void btnReceipt_Click(object sender, EventArgs e)
         {
             CC.OpenChildForm(new frmReceiptManager(), pnlContent, pnlLeft, btnReceipt);
-        }
-
-        private void btnRank_Click(object sender, EventArgs e)
-        {
-            CC.OpenChildForm(new frmRankManager(), pnlContent, pnlLeft, btnRank);
         }
 
         private void btnStatistical_Click(object sender, EventArgs e)

@@ -28,16 +28,18 @@ namespace ADKT_SellsWatch.Models
         [StringLength(50)]
         public string Address { get; set; }
 
-        [Column(TypeName = "date")]
+        public bool? Gender { get; set; }
+
         public DateTime? BirthDay { get; set; }
 
-        [Column(TypeName = "date")]
         public DateTime? WorkDay { get; set; }
 
         [StringLength(11)]
         public string Phone { get; set; }
 
         public decimal? Salary { get; set; }
+
+        public bool? Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Receipt> Receipts { get; set; }

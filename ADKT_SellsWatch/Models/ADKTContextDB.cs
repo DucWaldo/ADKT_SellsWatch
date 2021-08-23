@@ -28,20 +28,15 @@ namespace ADKT_SellsWatch.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Membership>()
-                .Property(e => e.CustomerPhone)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Membership>()
-                .HasMany(e => e.Receipts)
-                .WithRequired(e => e.Membership)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Receipt>()
-                .Property(e => e.CustomerPhone)
+                .Property(e => e.CustomerID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Receipt>()
-                .Property(e => e.UserName)
+                .Property(e => e.CustomerID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Receipt>()
+                .Property(e => e.StaffUserName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Receipt>()
@@ -72,11 +67,6 @@ namespace ADKT_SellsWatch.Models
             modelBuilder.Entity<Staff>()
                 .Property(e => e.Salary)
                 .HasPrecision(18, 0);
-
-            modelBuilder.Entity<Staff>()
-                .HasMany(e => e.Receipts)
-                .WithRequired(e => e.Staff)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Watch>()
                 .Property(e => e.WatchID)

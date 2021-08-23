@@ -31,9 +31,8 @@ namespace ADKT_SellsWatch.Form_For_Manager
         {
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.btnStatistical = new FontAwesome.Sharp.IconButton();
-            this.btnRank = new FontAwesome.Sharp.IconButton();
             this.btnReceipt = new FontAwesome.Sharp.IconButton();
-            this.btnBrand = new FontAwesome.Sharp.IconButton();
+            this.btnOther = new FontAwesome.Sharp.IconButton();
             this.btnCustomer = new FontAwesome.Sharp.IconButton();
             this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.btnStaff = new FontAwesome.Sharp.IconButton();
@@ -46,9 +45,8 @@ namespace ADKT_SellsWatch.Form_For_Manager
             // 
             this.pnlLeft.BackColor = System.Drawing.Color.DarkSalmon;
             this.pnlLeft.Controls.Add(this.btnStatistical);
-            this.pnlLeft.Controls.Add(this.btnRank);
             this.pnlLeft.Controls.Add(this.btnReceipt);
-            this.pnlLeft.Controls.Add(this.btnBrand);
+            this.pnlLeft.Controls.Add(this.btnOther);
             this.pnlLeft.Controls.Add(this.btnCustomer);
             this.pnlLeft.Controls.Add(this.btnLogout);
             this.pnlLeft.Controls.Add(this.btnStaff);
@@ -68,7 +66,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.btnStatistical.IconChar = FontAwesome.Sharp.IconChar.FileAlt;
             this.btnStatistical.IconColor = System.Drawing.Color.Black;
             this.btnStatistical.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnStatistical.Location = new System.Drawing.Point(0, 600);
+            this.btnStatistical.Location = new System.Drawing.Point(0, 500);
             this.btnStatistical.Name = "btnStatistical";
             this.btnStatistical.Size = new System.Drawing.Size(250, 100);
             this.btnStatistical.TabIndex = 7;
@@ -76,24 +74,6 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.btnStatistical.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnStatistical.UseVisualStyleBackColor = true;
             this.btnStatistical.Click += new System.EventHandler(this.btnStatistical_Click);
-            // 
-            // btnRank
-            // 
-            this.btnRank.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRank.FlatAppearance.BorderSize = 0;
-            this.btnRank.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRank.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRank.IconChar = FontAwesome.Sharp.IconChar.Gitkraken;
-            this.btnRank.IconColor = System.Drawing.Color.Black;
-            this.btnRank.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRank.Location = new System.Drawing.Point(0, 500);
-            this.btnRank.Name = "btnRank";
-            this.btnRank.Size = new System.Drawing.Size(250, 100);
-            this.btnRank.TabIndex = 6;
-            this.btnRank.Text = "HẠNG";
-            this.btnRank.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnRank.UseVisualStyleBackColor = true;
-            this.btnRank.Click += new System.EventHandler(this.btnRank_Click);
             // 
             // btnReceipt
             // 
@@ -113,23 +93,23 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.btnReceipt.UseVisualStyleBackColor = true;
             this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
             // 
-            // btnBrand
+            // btnOther
             // 
-            this.btnBrand.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBrand.FlatAppearance.BorderSize = 0;
-            this.btnBrand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBrand.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.btnBrand.IconColor = System.Drawing.Color.Black;
-            this.btnBrand.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnBrand.Location = new System.Drawing.Point(0, 300);
-            this.btnBrand.Name = "btnBrand";
-            this.btnBrand.Size = new System.Drawing.Size(250, 100);
-            this.btnBrand.TabIndex = 4;
-            this.btnBrand.Text = "THƯƠNG HIỆU";
-            this.btnBrand.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnBrand.UseVisualStyleBackColor = true;
-            this.btnBrand.Click += new System.EventHandler(this.btnBrand_Click);
+            this.btnOther.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOther.FlatAppearance.BorderSize = 0;
+            this.btnOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOther.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnOther.IconColor = System.Drawing.Color.Black;
+            this.btnOther.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnOther.Location = new System.Drawing.Point(0, 300);
+            this.btnOther.Name = "btnOther";
+            this.btnOther.Size = new System.Drawing.Size(250, 100);
+            this.btnOther.TabIndex = 4;
+            this.btnOther.Text = "KHÁC";
+            this.btnOther.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnOther.UseVisualStyleBackColor = true;
+            this.btnOther.Click += new System.EventHandler(this.btnOther_Click);
             // 
             // btnCustomer
             // 
@@ -231,9 +211,8 @@ namespace ADKT_SellsWatch.Form_For_Manager
 
         private System.Windows.Forms.Panel pnlLeft;
         private FontAwesome.Sharp.IconButton btnStatistical;
-        private FontAwesome.Sharp.IconButton btnRank;
         private FontAwesome.Sharp.IconButton btnReceipt;
-        private FontAwesome.Sharp.IconButton btnBrand;
+        private FontAwesome.Sharp.IconButton btnOther;
         private FontAwesome.Sharp.IconButton btnCustomer;
         private FontAwesome.Sharp.IconButton btnLogout;
         private FontAwesome.Sharp.IconButton btnStaff;

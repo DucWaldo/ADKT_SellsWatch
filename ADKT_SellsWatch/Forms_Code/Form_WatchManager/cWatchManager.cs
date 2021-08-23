@@ -28,10 +28,7 @@ namespace ADKT_SellsWatch.Forms_Code.Form_WatchManager
         {
             try
             {
-                if (R > -1 && C > -1)
-                {
-                    acWatchManagers.CellLick(R, C, dgvWatch, txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem);
-                }
+                acWatchManagers.CellLick(R, C, dgvWatch, txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem);
             }
             catch (Exception ex)
             {
@@ -43,11 +40,11 @@ namespace ADKT_SellsWatch.Forms_Code.Form_WatchManager
         {
             try
             {
-                if (MessageBox.Show("Bạn có muốn thêm đồng hồ này không", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Bạn có muốn cập nhật đồng hồ này không", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     acWatchManagers.Update(txtWatchID, txtWatchName, rbtMale, rbtFemale, txtGlass, txtWaterproof, txtStrap, txtPrice, cbbBrandName, nudNumOfItem, pnlInput);
                     acWatchManagers.BindGrid(dgvWatch);
-                    throw new Exception("Thêm thành công!");
+                    throw new Exception("Cập nhật thành công!");
                 }
             }
             catch (Exception ex)
@@ -57,13 +54,13 @@ namespace ADKT_SellsWatch.Forms_Code.Form_WatchManager
             }
         }
 
-        public void Delete_Click(DataGridView dgvWatch, TextBox txtWatchID, Panel pnlInput)
+        public void Delete_Click(DataGridView dgvWatch, TextBox txtWatchID)
         {
             try
             {
                 if (MessageBox.Show("Bạn có muốn xoá đồng hồ này không", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    acWatchManagers.Delete(txtWatchID, pnlInput);
+                    acWatchManagers.Delete(txtWatchID);
                     acWatchManagers.BindGrid(dgvWatch);
                     throw new Exception("Đã xoá thành công!");
                 }

@@ -17,16 +17,14 @@ namespace ADKT_SellsWatch.Models
 
         public int ReceiptID { get; set; }
 
-        [Required]
-        [StringLength(11)]
-        public string CustomerPhone { get; set; }
+        [StringLength(15)]
+        public string CustomerID { get; set; }
 
-        [Required]
         [StringLength(50)]
-        public string UserName { get; set; }
+        public string StaffUserName { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         public decimal? TotalPrice { get; set; }
 

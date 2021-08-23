@@ -18,15 +18,15 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Login
             {
                 if (acLogins.accountAdmin(US, PW) == true)
                 {
-                    A.Hide();
-                    C.ShowDialog();
+                    //A.Hide();
+                    C.Show();
                     A.Show();
                 }
                 else
                 {
                     acLogins.CheckLogin(US, PW, errUS, errPW);
-                    A.Hide();
-                    B.ShowDialog();
+                    //A.Hide();
+                    B.Show();
                     A.Show();
                 }
             }

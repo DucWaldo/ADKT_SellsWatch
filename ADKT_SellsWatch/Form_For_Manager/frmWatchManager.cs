@@ -37,7 +37,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            cWatchManagers.Delete_Click(dgvWatch, txtWatchID, pnlInput);
+            cWatchManagers.Delete_Click(dgvWatch, txtWatchID);
             this.btnReset_Click(sender, e);
         }
 

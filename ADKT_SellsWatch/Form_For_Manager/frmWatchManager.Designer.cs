@@ -58,7 +58,6 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvWatch = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.clnWatchID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnWatchName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +67,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnNumberOfItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.pnlInput.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -393,19 +393,6 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.dgvWatch.TabIndex = 0;
             this.dgvWatch.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWatch_CellClick);
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1428, 838);
-            this.panel1.TabIndex = 0;
-            // 
             // clnWatchID
             // 
             this.clnWatchID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -454,6 +441,19 @@ namespace ADKT_SellsWatch.Form_For_Manager
             // 
             this.clnNumberOfItem.HeaderText = "Số lượng";
             this.clnNumberOfItem.Name = "clnNumberOfItem";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1428, 838);
+            this.panel1.TabIndex = 0;
             // 
             // frmWatchManager
             // 

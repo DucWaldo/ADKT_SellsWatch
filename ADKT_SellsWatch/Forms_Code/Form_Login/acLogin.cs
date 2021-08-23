@@ -24,7 +24,7 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Login
         public Staff user(TextBox US, TextBox PW)
         {
             string temp = EncryptAndDecrypt.EncryptData(PW.Text);
-            return _dbContext.Staffs.Where(p => p.UserName == US.Text && p.Password == temp).FirstOrDefault();
+            return _dbContext.Staffs.Where(p => p.UserName == US.Text && p.Password == temp && p.Status == true).FirstOrDefault();
         }
         public void CheckLogin(TextBox US, TextBox PW, ErrorProvider errUS, ErrorProvider errPW)
         {
