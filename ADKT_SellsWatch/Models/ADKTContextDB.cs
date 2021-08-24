@@ -36,10 +36,6 @@ namespace ADKT_SellsWatch.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Receipt>()
-                .Property(e => e.StaffUserName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Receipt>()
                 .Property(e => e.TotalPrice)
                 .HasPrecision(18, 0);
 

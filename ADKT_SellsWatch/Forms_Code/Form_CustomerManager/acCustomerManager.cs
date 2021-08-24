@@ -14,6 +14,8 @@ namespace ADKT_SellsWatch.Forms_Code.Form_CustomerManager
         bool rbtGender;
         int firstRank = 0;
 
+
+
         ADKTContextDB _dbContext = new ADKTContextDB();
         private Membership membership(TextBox txtCustomerID, TextBox txtCustomerName, DateTimePicker dtpBirthDay, RadioButton rbnMale, DateTimePicker dtpCardDay, TextBox txtPhone)
         {

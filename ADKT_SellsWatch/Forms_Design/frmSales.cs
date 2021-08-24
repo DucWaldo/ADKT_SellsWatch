@@ -1,4 +1,5 @@
 ﻿using ADKT_SellsWatch.Forms_Code.Form_Sales;
+using ADKT_SellsWatch.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,11 +49,13 @@ namespace ADKT_SellsWatch.Forms_Design
         private void cbbWatch_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtWatchID.Text = cbbWatch.Text;
+            nudNumOfItem.Value = 0;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             cSaless.Add_Click(dgvDetails, txtWatchID, nudNumOfItem, txtTotalPrice);
+            nudNumOfItem.Value = 0;
         }
 
         private void dgvDetails_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -72,7 +75,10 @@ namespace ADKT_SellsWatch.Forms_Design
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-
+            cSaless.Pay_Click(txtTotalPrice, txtCustomerID, dgvReceipt, cbbWatch, dgvDetails);
+            dgvDetails.Rows.Clear();
+            txtCustomerID.Text = txtTotalPrice.Text = txtWatchID.Text = cbbWatch.Text = string.Empty;
+            nudNumOfItem.Value = 0;
         }
     }
 }

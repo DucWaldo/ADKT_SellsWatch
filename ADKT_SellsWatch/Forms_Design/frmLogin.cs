@@ -1,5 +1,6 @@
 ﻿using ADKT_SellsWatch.Form_For_Manager;
 using ADKT_SellsWatch.Forms_Code.Form_Login;
+using ADKT_SellsWatch.Forms_Code.Form_Sales;
 using ADKT_SellsWatch.Models;
 using System;
 using System.Collections.Generic;

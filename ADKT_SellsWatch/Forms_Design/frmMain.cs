@@ -44,7 +44,6 @@ namespace ADKT_SellsWatch.Forms_Design
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             CC.OpenChildForm(new frmCustomerManager(), pnlContent, pnlLeft, btnCustomer);
-
         }
 
         private void frmMain_Load(object sender, EventArgs e)

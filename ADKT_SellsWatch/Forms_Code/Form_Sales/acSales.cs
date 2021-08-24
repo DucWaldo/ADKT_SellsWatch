@@ -16,6 +16,7 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
         int R_index = -1;
         int price = 0;
 
+
         public void BindGrid(DataGridView dgvReceipt)
         {
             List<Receipt> receipts = _dbContext.Receipts.ToList();
@@ -96,11 +97,10 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
         {
             if (txtCustomerID.Text != string.Empty)
             {
-                Membership watch = _dbContext.Memberships.FirstOrDefault(p => p.CustomerID == txtCustomerID.Text);
-
-                if (watch != null)
+                if (checkCus(txtCustomerID) == true)
                 {
                     MessageBox.Show("Đã có khách hàng này!");
+
                 }
                 else
                 {
@@ -118,6 +118,16 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
             {
                 throw new Exception("Vui lòng nhập CMND/ CCCD khách hàng!");
             }
+        }
+
+        private bool checkCus(TextBox txtCustomerID)
+        {
+            Membership Cus = _dbContext.Memberships.FirstOrDefault(p => p.CustomerID == txtCustomerID.Text);
+            if (Cus != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void NumOfItem_ValueChanged(TextBox txtWatchID, NumericUpDown nudNumOfItem)
@@ -138,10 +148,6 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
                     nudNumOfItem.Enabled = false;
                     throw new Exception("Không có mặt hàng, vui lòng kiểm tra lại");
                 }
-            }
-            else
-            {
-                throw new Exception("Chưa có sản phẩm, vui lòng nhập");
             }
         }
 
@@ -180,7 +186,7 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
                 if (dgvDetails.Rows[R_index].Cells[2].Value != null)
                 {
                     string temp = dgvDetails.Rows[R_index].Cells[2].Value.ToString();
-                    txtTotalPrice.Text = PriceTotal(- int.Parse(temp)).ToString();
+                    txtTotalPrice.Text = PriceTotal(-int.Parse(temp)).ToString();
                     dgvDetails.Rows.RemoveAt(R_index);
                 }
             }
@@ -193,12 +199,97 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
             dgvDetails.Rows.Clear();
         }
 
-        public void PayBill(TextBox txtTotalPrice)
+        public void PayBill(TextBox txtTotalPrice, TextBox txtCustomerID, DataGridView dgvDetails)
         {
-            if (MessageBox.Show("Bạn có muốn thanh toán hoá đơn với giá: " + txtTotalPrice.Text, "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (checkCus(txtCustomerID) == false)
             {
-
+                throw new Exception("Chưa có khách hàng này, vui lòng check lại!");
             }
+            if (txtCustomerID.Text != string.Empty && txtTotalPrice.Text != string.Empty)
+            {
+                if (MessageBox.Show("Bạn có muốn thanh toán hoá đơn với giá: " + txtTotalPrice.Text, "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Receipt receipts = new Receipt() { CustomerID = txtCustomerID.Text, Date = DateTime.Now, TotalPrice = int.Parse(txtTotalPrice.Text) };
+
+                    _dbContext.Receipts.Add(receipts);
+
+                    /*Receipt temp = _dbContext.Receipts.Last();
+                    int ReID = temp.ReceiptID;*/
+
+                    string ID = string.Empty;
+                    string NUM = string.Empty;
+
+                    for (int i = 0; i < dgvDetails.Rows.Count; i++)
+                    {
+                        if (dgvDetails.Rows[i].Cells[0].Value != null && dgvDetails.Rows[i].Cells[1].Value != null)
+                        {
+                            ID = dgvDetails.Rows[i].Cells[0].Value.ToString();
+                            NUM = dgvDetails.Rows[i].Cells[1].Value.ToString();
+
+                            Receipt_Details RECEIPT = new Receipt_Details()
+                            {
+                                WatchID = ID,
+                                ReceiptID = receipts.ReceiptID,
+                                numOfWatch = int.Parse(NUM)
+                            };
+
+                            _dbContext.Receipt_Details.Add(RECEIPT);
+                            _dbContext.SaveChanges();
+
+                            Watch watchs = _dbContext.Watches.FirstOrDefault(p => p.WatchID == ID);
+                            if (watchs != null)
+                            {
+                                watchs.NumOfItem -= int.Parse(NUM);
+                                _dbContext.SaveChanges();
+                            }
+                        }
+                    }
+                    _dbContext.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new Exception("Chưa có thông tin gì để thanh toán");
+            }
+            updateRank();
+        }
+
+        public void updateRank()
+        {
+            List<Membership> memberships = _dbContext.Memberships.ToList();
+            for (int i = 0; i < _dbContext.Memberships.Count(); i++)
+            {
+                Membership MemberUpdate = memberships[i];
+                List<Receipt> numRank = _dbContext.Receipts.Where(p => p.CustomerID == MemberUpdate.CustomerID).ToList();
+                int numRanks = _dbContext.Receipts.Where(p => p.CustomerID == MemberUpdate.CustomerID).Count();
+                if (CheckRank(numRanks) != 0)
+                {
+                    MemberUpdate.RankID = CheckRank(numRank.Count);
+                    _dbContext.SaveChanges();
+                }
+                else
+                {
+                    MemberUpdate.RankID = 0;
+                    _dbContext.SaveChanges();
+                }
+            }
+        }
+
+        public int CheckRank(int numRank)
+        {
+            if (numRank >= 5)
+            {
+                return 1;
+            }
+            if (numRank >= 10)
+            {
+                return 2;
+            }
+            if (numRank >= 15)
+            {
+                return 3;
+            }
+            return 0;
         }
     }
 }

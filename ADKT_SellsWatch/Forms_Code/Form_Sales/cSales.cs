@@ -14,6 +14,7 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
         {
             acSaless.BindGrid(dgvReceipt);
             acSaless.CBBWatch(cbbWatch);
+            acSaless.updateRank();
         }
 
         public void CheckWatch_Click(TextBox txtWatchID)
@@ -82,5 +83,17 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
             }
         }
 
+        public void Pay_Click(TextBox txtTotalPrice, TextBox txtCustomerID, DataGridView dgvReceipt, ComboBox cbbWatch, DataGridView dgvDetails)
+        {
+            try
+            {
+                acSaless.PayBill(txtTotalPrice, txtCustomerID, dgvDetails);
+                Sales_Load(dgvReceipt, cbbWatch);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK);
+            }
+        }
     }
 }
