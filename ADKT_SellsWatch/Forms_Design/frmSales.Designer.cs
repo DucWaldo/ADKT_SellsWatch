@@ -32,6 +32,7 @@ namespace ADKT_SellsWatch.Forms_Design
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvReceipt = new System.Windows.Forms.DataGridView();
+            this.clnReceiptID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +46,7 @@ namespace ADKT_SellsWatch.Forms_Design
             this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.cbbWatch = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
@@ -55,7 +57,6 @@ namespace ADKT_SellsWatch.Forms_Design
             this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.nudNumOfItem = new System.Windows.Forms.NumericUpDown();
             this.txtWatchID = new System.Windows.Forms.TextBox();
-            this.cbbWatch = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
@@ -93,14 +94,23 @@ namespace ADKT_SellsWatch.Forms_Design
             this.dgvReceipt.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReceipt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReceipt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clnReceiptID,
             this.clnCustomerID,
             this.clnDate,
             this.clnTotalPrice});
             this.dgvReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvReceipt.Location = new System.Drawing.Point(0, 0);
             this.dgvReceipt.Name = "dgvReceipt";
+            this.dgvReceipt.ReadOnly = true;
+            this.dgvReceipt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReceipt.Size = new System.Drawing.Size(1421, 424);
             this.dgvReceipt.TabIndex = 0;
+            this.dgvReceipt.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipt_CellDoubleClick);
+            // 
+            // clnReceiptID
+            // 
+            this.clnReceiptID.HeaderText = "Mã";
+            this.clnReceiptID.Name = "clnReceiptID";
             // 
             // clnCustomerID
             // 
@@ -222,6 +232,16 @@ namespace ADKT_SellsWatch.Forms_Design
             this.panel5.Size = new System.Drawing.Size(627, 393);
             this.panel5.TabIndex = 0;
             // 
+            // cbbWatch
+            // 
+            this.cbbWatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbWatch.FormattingEnabled = true;
+            this.cbbWatch.Location = new System.Drawing.Point(75, 228);
+            this.cbbWatch.Name = "cbbWatch";
+            this.cbbWatch.Size = new System.Drawing.Size(354, 32);
+            this.cbbWatch.TabIndex = 10;
+            this.cbbWatch.TextChanged += new System.EventHandler(this.cbbWatch_SelectedIndexChanged);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -303,6 +323,7 @@ namespace ADKT_SellsWatch.Forms_Design
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(354, 29);
             this.txtCustomerID.TabIndex = 2;
+            this.txtCustomerID.TextChanged += new System.EventHandler(this.txtCustomerID_TextChanged);
             // 
             // nudNumOfItem
             // 
@@ -321,16 +342,6 @@ namespace ADKT_SellsWatch.Forms_Design
             this.txtWatchID.Size = new System.Drawing.Size(354, 29);
             this.txtWatchID.TabIndex = 0;
             this.txtWatchID.TextChanged += new System.EventHandler(this.txtWatchID_TextChanged);
-            // 
-            // cbbWatch
-            // 
-            this.cbbWatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbWatch.FormattingEnabled = true;
-            this.cbbWatch.Location = new System.Drawing.Point(75, 228);
-            this.cbbWatch.Name = "cbbWatch";
-            this.cbbWatch.Size = new System.Drawing.Size(354, 32);
-            this.cbbWatch.TabIndex = 10;
-            this.cbbWatch.TextChanged += new System.EventHandler(this.cbbWatch_SelectedIndexChanged);
             // 
             // frmSales
             // 
@@ -373,9 +384,6 @@ namespace ADKT_SellsWatch.Forms_Design
         private System.Windows.Forms.NumericUpDown nudNumOfItem;
         private System.Windows.Forms.TextBox txtWatchID;
         private System.Windows.Forms.DataGridView dgvReceipt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnCustomerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnTotalPrice;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDelete;
@@ -384,5 +392,9 @@ namespace ADKT_SellsWatch.Forms_Design
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbbWatch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnReceiptID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnCustomerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnTotalPrice;
     }
 }

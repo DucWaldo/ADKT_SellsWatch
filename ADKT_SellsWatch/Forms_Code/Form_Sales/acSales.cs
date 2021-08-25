@@ -1,4 +1,5 @@
 ﻿using ADKT_SellsWatch.Form_For_Manager;
+using ADKT_SellsWatch.Forms_Design;
 using ADKT_SellsWatch.Models;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,8 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
     class acSales
     {
         ADKTContextDB _dbContext = new ADKTContextDB();
-        frmCustomerManager frmCM = new frmCustomerManager();
         int R_index = -1;
-        int price = 0;
+        int priceT = 0;
 
 
         public void BindGrid(DataGridView dgvReceipt)
@@ -29,9 +29,10 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
             foreach (var item in receipts)
             {
                 int index = dgvReceipt.Rows.Add();
-                dgvReceipt.Rows[index].Cells[0].Value = item.CustomerID;
-                dgvReceipt.Rows[index].Cells[1].Value = item.Date;
-                dgvReceipt.Rows[index].Cells[2].Value = item.TotalPrice;
+                dgvReceipt.Rows[index].Cells[0].Value = item.ReceiptID;
+                dgvReceipt.Rows[index].Cells[1].Value = item.CustomerID;
+                dgvReceipt.Rows[index].Cells[2].Value = item.Date.Value.ToString("dd/MM/yyyy");
+                dgvReceipt.Rows[index].Cells[3].Value = item.TotalPrice;
             }
         }
 
@@ -93,19 +94,20 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
             }
         }*/
 
-        public void CheckCustomer(TextBox txtCustomerID)
+        public void CheckCustomer(TextBox txtCustomerID, Button btnPay)
         {
             if (txtCustomerID.Text != string.Empty)
             {
                 if (checkCus(txtCustomerID) == true)
                 {
                     MessageBox.Show("Đã có khách hàng này!");
-
+                    btnPay.Enabled = true;
                 }
                 else
                 {
                     if (MessageBox.Show("Chưa có khách hàng này, bạn có muốn thêm khách hàng mới không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
+                        frmCustomerManager frmCM = new frmCustomerManager();
                         frmCM.Show();
                     }
                     else
@@ -120,7 +122,7 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
             }
         }
 
-        private bool checkCus(TextBox txtCustomerID)
+        public bool checkCus(TextBox txtCustomerID)
         {
             Membership Cus = _dbContext.Memberships.FirstOrDefault(p => p.CustomerID == txtCustomerID.Text);
             if (Cus != null)
@@ -171,7 +173,11 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
 
         public int PriceTotal(int Prices)
         {
-            return price += Prices;
+            if (Prices != 0)
+            {
+                return priceT += Prices;
+            }
+            return 0;
         }
 
         public void CellClick(int R)
@@ -195,16 +201,14 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
         public void Reset(DataGridView dgvDetails, TextBox txtWatchID, NumericUpDown nudNumOfItem, TextBox txtTotalPrice, ComboBox cbbWatch, TextBox txtCustomerID)
         {
             nudNumOfItem.Value = 0;
+            PriceTotal(0);
+            priceT = 0;
             txtWatchID.Text = txtTotalPrice.Text = txtCustomerID.Text = cbbWatch.Text = string.Empty;
             dgvDetails.Rows.Clear();
         }
 
         public void PayBill(TextBox txtTotalPrice, TextBox txtCustomerID, DataGridView dgvDetails)
         {
-            if (checkCus(txtCustomerID) == false)
-            {
-                throw new Exception("Chưa có khách hàng này, vui lòng check lại!");
-            }
             if (txtCustomerID.Text != string.Empty && txtTotalPrice.Text != string.Empty)
             {
                 if (MessageBox.Show("Bạn có muốn thanh toán hoá đơn với giá: " + txtTotalPrice.Text, "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)

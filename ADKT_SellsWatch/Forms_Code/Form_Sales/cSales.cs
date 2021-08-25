@@ -29,11 +29,11 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
             }
         }
 
-        public void CheckCustomer_Click(TextBox txtCustomerID)
+        public void CheckCustomer_Click(TextBox txtCustomerID, Button btnPay)
         {
             try
             {
-                acSaless.CheckCustomer(txtCustomerID);
+                acSaless.CheckCustomer(txtCustomerID, btnPay);
             }
             catch (Exception ex)
             {
@@ -87,8 +87,8 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
         {
             try
             {
-                acSaless.PayBill(txtTotalPrice, txtCustomerID, dgvDetails);
-                Sales_Load(dgvReceipt, cbbWatch);
+                    acSaless.PayBill(txtTotalPrice, txtCustomerID, dgvDetails);
+                    Sales_Load(dgvReceipt, cbbWatch);
             }
             catch (Exception ex)
             {

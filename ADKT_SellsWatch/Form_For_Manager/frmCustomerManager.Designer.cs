@@ -120,6 +120,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.dgvMembership.Size = new System.Drawing.Size(1130, 749);
             this.dgvMembership.TabIndex = 0;
             this.dgvMembership.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMembership_CellClick);
+            this.dgvMembership.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMembership_CellDoubleClick);
             // 
             // clnCustomerID
             // 
@@ -409,7 +410,6 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1452, 862);
-            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Name = "frmCustomerManager";
             this.Load += new System.EventHandler(this.frmCustomerManager_Load);

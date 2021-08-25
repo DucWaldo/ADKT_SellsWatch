@@ -24,6 +24,7 @@ namespace ADKT_SellsWatch.Forms_Design
         {
             cSaless.Sales_Load(dgvReceipt, cbbWatch);
             cbbWatch.Text = string.Empty;
+            btnPay.Enabled = false;
         }
 
         private void btnCheckWatch_Click(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace ADKT_SellsWatch.Forms_Design
 
         private void btnCheckCustomer_Click(object sender, EventArgs e)
         {
-            cSaless.CheckCustomer_Click(txtCustomerID);
+            cSaless.CheckCustomer_Click(txtCustomerID, btnPay);
         }
 
         private void nudNumOfItem_ValueChanged(object sender, EventArgs e)
@@ -79,6 +80,26 @@ namespace ADKT_SellsWatch.Forms_Design
             dgvDetails.Rows.Clear();
             txtCustomerID.Text = txtTotalPrice.Text = txtWatchID.Text = cbbWatch.Text = string.Empty;
             nudNumOfItem.Value = 0;
+        }
+
+        private void txtCustomerID_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCustomerID.Text == string.Empty)
+            {
+                btnPay.Enabled = false;
+            }
+        }
+
+        private void dgvReceipt_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                string Link = dgvReceipt.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string ID = dgvReceipt.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string TPRICE = dgvReceipt.Rows[e.RowIndex].Cells[3].Value.ToString();
+                frmReceipt_Details frm = new frmReceipt_Details(Link, ID, TPRICE);
+                frm.Show();
+            }
         }
     }
 }

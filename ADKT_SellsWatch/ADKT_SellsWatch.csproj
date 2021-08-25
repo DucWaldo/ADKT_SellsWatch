@@ -68,17 +68,19 @@
     <Compile Include="Forms_Code\Form_Main\cMain.cs" />
     <Compile Include="Forms_Code\Form_OtherManager\acOtherManager.cs" />
     <Compile Include="Forms_Code\Form_OtherManager\cOtherManager.cs" />
+    <Compile Include="Forms_Code\Form_Receipt\acReceipt.cs" />
+    <Compile Include="Forms_Code\Form_Receipt\cReceipt.cs" />
     <Compile Include="Forms_Code\Form_Sales\acSales.cs" />
     <Compile Include="Forms_Code\Form_Sales\cSales.cs" />
     <Compile Include="Forms_Code\Form_StaffManager\acStaffManager.cs" />
     <Compile Include="Forms_Code\Form_StaffManager\cStaffManager.cs" />
     <Compile Include="Forms_Code\Form_WatchManager\acWatchManager.cs" />
     <Compile Include="Forms_Code\Form_WatchManager\cWatchManager.cs" />
-    <Compile Include="Forms_Design\frmCustomers.cs">
+    <Compile Include="Forms_Design\frmCustomerHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms_Design\frmCustomers.Designer.cs">
-      <DependentUpon>frmCustomers.cs</DependentUpon>
+    <Compile Include="Forms_Design\frmCustomerHistory.Designer.cs">
+      <DependentUpon>frmCustomerHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms_Design\frmLogin.cs">
       <SubType>Form</SubType>
@@ -91,6 +93,12 @@
     </Compile>
     <Compile Include="Forms_Design\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Design\frmReceipt_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms_Design\frmReceipt_Details.Designer.cs">
+      <DependentUpon>frmReceipt_Details.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms_Design\frmSales.cs">
       <SubType>Form</SubType>
@@ -150,11 +158,17 @@
     <Compile Include="Models\Watch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms_Design\frmCustomerHistory.resx">
+      <DependentUpon>frmCustomerHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms_Design\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms_Design\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms_Design\frmReceipt_Details.resx">
+      <DependentUpon>frmReceipt_Details.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms_Design\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
@@ -167,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_For_Manager\frmOtherManager.resx">
       <DependentUpon>frmOtherManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_For_Manager\frmReceiptManager.resx">
+      <DependentUpon>frmReceiptManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_For_Manager\frmStaffManager.resx">
       <DependentUpon>frmStaffManager.cs</DependentUpon>
