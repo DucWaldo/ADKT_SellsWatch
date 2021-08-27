@@ -9,6 +9,12 @@ namespace ADKT_SellsWatch.Models
     [Table("Staff")]
     public partial class Staff
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Staff()
+        {
+            Receipts = new HashSet<Receipt>();
+        }
+
         [Key]
         [StringLength(50)]
         public string UserName { get; set; }
@@ -34,5 +40,8 @@ namespace ADKT_SellsWatch.Models
         public decimal? Salary { get; set; }
 
         public bool? Status { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Receipt> Receipts { get; set; }
     }
 }

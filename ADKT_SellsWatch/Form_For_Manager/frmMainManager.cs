@@ -46,7 +46,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
 
         private void btnStatistical_Click(object sender, EventArgs e)
         {
-            CC.OpenChildForm(new frmStaffManager(), pnlContent, pnlLeft, btnStaff);
+            CC.OpenChildForm(new frmStatisticalManager(), pnlContent, pnlLeft, btnStatistical);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

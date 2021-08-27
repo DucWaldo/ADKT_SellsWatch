@@ -16,6 +16,10 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
         int R_index = -1;
         int priceT = 0;
 
+        public acSales()
+        {
+            
+        }
 
         public void BindGrid(DataGridView dgvReceipt)
         {
@@ -107,8 +111,8 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
                 {
                     if (MessageBox.Show("Chưa có khách hàng này, bạn có muốn thêm khách hàng mới không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        frmCustomerManager frmCM = new frmCustomerManager();
-                        frmCM.Show();
+                        frmAddMembership frmAM = new frmAddMembership(txtCustomerID.Text);
+                        frmAM.Show();
                     }
                     else
                     {
@@ -207,13 +211,14 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
             dgvDetails.Rows.Clear();
         }
 
-        public void PayBill(TextBox txtTotalPrice, TextBox txtCustomerID, DataGridView dgvDetails)
+        public void PayBill(TextBox txtTotalPrice, TextBox txtCustomerID, DataGridView dgvDetails, string userReceive)
         {
             if (txtCustomerID.Text != string.Empty && txtTotalPrice.Text != string.Empty)
             {
                 if (MessageBox.Show("Bạn có muốn thanh toán hoá đơn với giá: " + txtTotalPrice.Text, "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Receipt receipts = new Receipt() { CustomerID = txtCustomerID.Text, Date = DateTime.Now, TotalPrice = int.Parse(txtTotalPrice.Text) };
+                    string temp = userReceive;
+                    Receipt receipts = new Receipt() { CustomerID = txtCustomerID.Text, StaffID = temp, Date = DateTime.Now, TotalPrice = int.Parse(txtTotalPrice.Text) };
 
                     _dbContext.Receipts.Add(receipts);
 

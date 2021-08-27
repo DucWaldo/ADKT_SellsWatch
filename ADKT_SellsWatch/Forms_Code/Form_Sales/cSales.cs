@@ -83,11 +83,11 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
             }
         }
 
-        public void Pay_Click(TextBox txtTotalPrice, TextBox txtCustomerID, DataGridView dgvReceipt, ComboBox cbbWatch, DataGridView dgvDetails)
+        public void Pay_Click(TextBox txtTotalPrice, TextBox txtCustomerID, DataGridView dgvReceipt, ComboBox cbbWatch, DataGridView dgvDetails, string userReceive)
         {
             try
             {
-                    acSaless.PayBill(txtTotalPrice, txtCustomerID, dgvDetails);
+                    acSaless.PayBill(txtTotalPrice, txtCustomerID, dgvDetails, userReceive);
                     Sales_Load(dgvReceipt, cbbWatch);
             }
             catch (Exception ex)

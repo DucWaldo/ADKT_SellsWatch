@@ -36,6 +36,10 @@ namespace ADKT_SellsWatch.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Receipt>()
+                .Property(e => e.StaffID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Receipt>()
                 .Property(e => e.TotalPrice)
                 .HasPrecision(18, 0);
 
@@ -63,6 +67,11 @@ namespace ADKT_SellsWatch.Models
             modelBuilder.Entity<Staff>()
                 .Property(e => e.Salary)
                 .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Staff>()
+                .HasMany(e => e.Receipts)
+                .WithOptional(e => e.Staff)
+                .HasForeignKey(e => e.StaffID);
 
             modelBuilder.Entity<Watch>()
                 .Property(e => e.WatchID)

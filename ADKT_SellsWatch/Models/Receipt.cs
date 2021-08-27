@@ -20,6 +20,9 @@ namespace ADKT_SellsWatch.Models
         [StringLength(15)]
         public string CustomerID { get; set; }
 
+        [StringLength(50)]
+        public string StaffID { get; set; }
+
         [Column(TypeName = "date")]
         public DateTime? Date { get; set; }
 
@@ -29,5 +32,7 @@ namespace ADKT_SellsWatch.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Receipt_Details> Receipt_Details { get; set; }
+
+        public virtual Staff Staff { get; set; }
     }
 }

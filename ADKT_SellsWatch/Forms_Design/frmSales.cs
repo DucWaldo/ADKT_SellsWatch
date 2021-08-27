@@ -14,10 +14,18 @@ namespace ADKT_SellsWatch.Forms_Design
 {
     public partial class frmSales : Form
     {
+
+        Staff userReceive;
         cSales cSaless = new cSales();
         public frmSales()
         {
             InitializeComponent();
+        }
+
+        public frmSales(Staff userReceive)
+        {
+            InitializeComponent();
+            this.userReceive = userReceive;
         }
 
         private void frmSales_Load(object sender, EventArgs e)
@@ -76,7 +84,7 @@ namespace ADKT_SellsWatch.Forms_Design
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            cSaless.Pay_Click(txtTotalPrice, txtCustomerID, dgvReceipt, cbbWatch, dgvDetails);
+            cSaless.Pay_Click(txtTotalPrice, txtCustomerID, dgvReceipt, cbbWatch, dgvDetails, userReceive.UserName.ToString());
             dgvDetails.Rows.Clear();
             txtCustomerID.Text = txtTotalPrice.Text = txtWatchID.Text = cbbWatch.Text = string.Empty;
             nudNumOfItem.Value = 0;

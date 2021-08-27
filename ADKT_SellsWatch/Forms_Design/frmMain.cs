@@ -38,7 +38,7 @@ namespace ADKT_SellsWatch.Forms_Design
 
         private void btnSales_Click(object sender, EventArgs e)
         {
-            CC.OpenChildForm(new frmSales(), pnlContent, pnlLeft, btnSales);
+            CC.OpenChildForm(new frmSales(userReceive), pnlContent, pnlLeft, btnSales);
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
