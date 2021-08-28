@@ -32,6 +32,7 @@ namespace ADKT_SellsWatch.Forms_Design
 
         private void frmCustomerHistory_Load(object sender, EventArgs e)
         {
+            dtpBegin.Enabled = dtpEnd.Enabled = false;
             List<Receipt_Details> receipts = _dbContext.Receipt_Details.Where(p => p.Receipt.CustomerID == IDHis).ToList();
 
             lblID.Text = IDHis.ToString();
@@ -66,6 +67,19 @@ namespace ADKT_SellsWatch.Forms_Design
         {
             dtpBegin.Value = dtpEnd.Value = DateTime.Now;
             frmCustomerHistory_Load(sender, e);
+        }
+
+        private void chbTime_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbTime.Checked == true)
+            {
+                dtpBegin.Enabled = dtpEnd.Enabled = true;
+            }
+            else
+            {
+                dtpBegin.Enabled = dtpEnd.Enabled = false;
+                btnReset_Click(sender, e);
+            }
         }
     }
 }

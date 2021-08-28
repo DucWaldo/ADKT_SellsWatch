@@ -100,7 +100,7 @@ namespace ADKT_SellsWatch.Forms_Design
 
         private void dgvReceipt_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            if (e.RowIndex > -1 && e.ColumnIndex > -1 && dgvReceipt.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 string Link = dgvReceipt.Rows[e.RowIndex].Cells[0].Value.ToString();
                 string ID = dgvReceipt.Rows[e.RowIndex].Cells[1].Value.ToString();

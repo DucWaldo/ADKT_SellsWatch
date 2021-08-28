@@ -29,6 +29,7 @@ namespace ADKT_SellsWatch.Forms_Design
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerHistory));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnReset = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@ namespace ADKT_SellsWatch.Forms_Design
             this.clnDayBuy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chbTime = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
@@ -52,6 +54,7 @@ namespace ADKT_SellsWatch.Forms_Design
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chbTime);
             this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.dtpEnd);
@@ -200,6 +203,18 @@ namespace ADKT_SellsWatch.Forms_Design
             this.clnPrice.HeaderText = "Giá";
             this.clnPrice.Name = "clnPrice";
             // 
+            // chbTime
+            // 
+            this.chbTime.AutoSize = true;
+            this.chbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbTime.Location = new System.Drawing.Point(86, 68);
+            this.chbTime.Name = "chbTime";
+            this.chbTime.Size = new System.Drawing.Size(80, 28);
+            this.chbTime.TabIndex = 8;
+            this.chbTime.Text = "Lọc từ";
+            this.chbTime.UseVisualStyleBackColor = true;
+            this.chbTime.CheckedChanged += new System.EventHandler(this.chbTime_CheckedChanged);
+            // 
             // frmCustomerHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,6 +223,7 @@ namespace ADKT_SellsWatch.Forms_Design
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCustomerHistory";
             this.Text = "Lịch sử khách hàng";
             this.Load += new System.EventHandler(this.frmCustomerHistory_Load);
@@ -237,5 +253,6 @@ namespace ADKT_SellsWatch.Forms_Design
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPrice;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.CheckBox chbTime;
     }
 }

@@ -29,6 +29,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainManager));
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.btnStatistical = new FontAwesome.Sharp.IconButton();
             this.btnReceipt = new FontAwesome.Sharp.IconButton();
@@ -198,6 +199,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
             this.ClientSize = new System.Drawing.Size(1411, 847);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlLeft);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hello: Admin@manager.com";

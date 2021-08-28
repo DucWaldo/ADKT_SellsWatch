@@ -262,6 +262,7 @@
     <None Include="Resources\heart-rate-watch_icon-icons.com_56413.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ADKT_SellsWatchDatabase.sql" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

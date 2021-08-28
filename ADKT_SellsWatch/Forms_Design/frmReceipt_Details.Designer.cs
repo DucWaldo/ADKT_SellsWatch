@@ -29,6 +29,7 @@ namespace ADKT_SellsWatch.Forms_Design
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceipt_Details));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblName = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
@@ -173,8 +174,9 @@ namespace ADKT_SellsWatch.Forms_Design
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReceipt_Details";
-            this.Text = "frmReceipt_Details";
+            this.Text = "Chi tiết hoá đơn";
             this.Load += new System.EventHandler(this.frmReceipt_Details_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -34,7 +34,7 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Receipt
 
         public void CellClick(int R, int C, DataGridView dgvUp, DataGridView dgvDown)
         {
-            if (R > -1 && C > -1)
+            if (R > -1 && C > -1 && dgvUp.Rows[R].Cells[C].Value != null)
             {
                 int ID = int.Parse(dgvUp.Rows[R].Cells[0].Value.ToString());
                 List<Receipt_Details> receipt_s = _dbContext.Receipt_Details.Where(p => p.ReceiptID == ID).ToList();
@@ -59,18 +59,12 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Receipt
         public void Datetimes(DateTimePicker dtpBegin, DateTimePicker dtpEnd, DataGridView dgvUp)
         {
             CheckDTP(dtpBegin, dtpEnd);
-            List<Receipt> receipts = _dbContext.Receipts.Where(p => p.Date > dtpBegin.Value && p.Date < dtpEnd.Value).ToList();
+            List<Receipt> receipts = _dbContext.Receipts.ToList().Where(p => p.Date >= dtpBegin.Value.Date && p.Date <= dtpEnd.Value.Date).ToList();
             AddBindGridUp(receipts, dgvUp);
         }
 
         private void CheckDTP(DateTimePicker dtpBegin, DateTimePicker dtpEnd)
         {
-            if (dtpBegin.Value > dtpEnd.Value)
-            {
-                dtpBegin.Value = DateTime.Now.AddDays(-1);
-                dtpEnd.Value = DateTime.Now;
-                throw new Exception("Thời gian trước không được quá thời gian sau!");
-            }
             if (dtpEnd.Value > DateTime.Now)
             {
                 dtpEnd.Value = DateTime.Now;

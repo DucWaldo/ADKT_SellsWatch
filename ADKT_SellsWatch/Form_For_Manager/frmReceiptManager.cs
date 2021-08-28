@@ -21,6 +21,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
 
         private void frmReceiptManager_Load(object sender, EventArgs e)
         {
+            dtpBegin.Enabled = dtpEnd.Enabled = false;
             dtpBegin.Value = DateTime.Now.AddDays(-1);
             cReceipts.ReceiptManager_Load(dgvUp);
         }
@@ -39,6 +40,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
         {
             dtpBegin.Value = DateTime.Now.AddDays(-1);
             dtpEnd.Value = DateTime.Now;
+            chbTime.Checked = false;
             dgvDown.Rows.Clear();
             frmReceiptManager_Load(sender, e);
         }
@@ -53,6 +55,19 @@ namespace ADKT_SellsWatch.Form_For_Manager
             {
                 frmReceiptManager_Load(sender, e);
                 dgvDown.Rows.Clear();
+            }
+        }
+
+        private void chbTime_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbTime.Checked == true)
+            {
+                dtpBegin.Enabled = dtpEnd.Enabled = true;
+            }
+            else
+            {
+                dtpBegin.Enabled = dtpEnd.Enabled = false;
+                btnReset_Click(sender, e);
             }
         }
     }

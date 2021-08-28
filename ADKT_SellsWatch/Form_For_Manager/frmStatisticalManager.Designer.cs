@@ -222,6 +222,9 @@ namespace ADKT_SellsWatch.Form_For_Manager
             // 
             // rvrSalaryStaff
             // 
+            this.rvrSalaryStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rvrSalaryStaff.Location = new System.Drawing.Point(6, 359);
             this.rvrSalaryStaff.Name = "rvrSalaryStaff";
             this.rvrSalaryStaff.ServerReport.BearerToken = null;

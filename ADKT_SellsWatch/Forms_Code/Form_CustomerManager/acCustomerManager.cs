@@ -82,6 +82,10 @@ namespace ADKT_SellsWatch.Forms_Code.Form_CustomerManager
         public void Delete(TextBox txtCustomerID)
         {
             Membership membership = _dbContext.Memberships.FirstOrDefault(s => s.CustomerID == txtCustomerID.Text);
+            if (_dbContext.Receipts.Any(p => p.CustomerID == membership.CustomerID) == true)
+            {
+                throw new Exception("Không thể xoá khách hàng này vì đã có đơn hàng");
+            }
             if (txtCustomerID.Text != string.Empty)
             {
                 if (membership != null)

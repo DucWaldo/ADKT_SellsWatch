@@ -57,6 +57,7 @@ namespace ADKT_SellsWatch.Forms_Design
             this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.nudNumOfItem = new System.Windows.Forms.NumericUpDown();
             this.txtWatchID = new System.Windows.Forms.TextBox();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
@@ -111,24 +112,29 @@ namespace ADKT_SellsWatch.Forms_Design
             // 
             this.clnReceiptID.HeaderText = "Mã";
             this.clnReceiptID.Name = "clnReceiptID";
+            this.clnReceiptID.ReadOnly = true;
             // 
             // clnCustomerID
             // 
             this.clnCustomerID.HeaderText = "CMND/ CCCD";
             this.clnCustomerID.Name = "clnCustomerID";
+            this.clnCustomerID.ReadOnly = true;
             // 
             // clnDate
             // 
             this.clnDate.HeaderText = "Ngày mua hàng";
             this.clnDate.Name = "clnDate";
+            this.clnDate.ReadOnly = true;
             // 
             // clnTotalPrice
             // 
             this.clnTotalPrice.HeaderText = "Tổng tiền";
             this.clnTotalPrice.Name = "clnTotalPrice";
+            this.clnTotalPrice.ReadOnly = true;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtDiscount);
             this.panel2.Controls.Add(this.btnPay);
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.txtTotalPrice);
@@ -142,8 +148,9 @@ namespace ADKT_SellsWatch.Forms_Design
             // 
             // btnPay
             // 
+            this.btnPay.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.Location = new System.Drawing.Point(920, 349);
+            this.btnPay.Location = new System.Drawing.Point(1289, 349);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(129, 39);
             this.btnPay.TabIndex = 8;
@@ -164,12 +171,12 @@ namespace ADKT_SellsWatch.Forms_Design
             // 
             // txtTotalPrice
             // 
-            this.txtTotalPrice.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtTotalPrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtTotalPrice.Enabled = false;
             this.txtTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPrice.Location = new System.Drawing.Point(1055, 353);
+            this.txtTotalPrice.Location = new System.Drawing.Point(774, 353);
             this.txtTotalPrice.Name = "txtTotalPrice";
-            this.txtTotalPrice.Size = new System.Drawing.Size(354, 29);
+            this.txtTotalPrice.Size = new System.Drawing.Size(280, 29);
             this.txtTotalPrice.TabIndex = 5;
             // 
             // dgvDetails
@@ -343,6 +350,17 @@ namespace ADKT_SellsWatch.Forms_Design
             this.txtWatchID.TabIndex = 0;
             this.txtWatchID.TextChanged += new System.EventHandler(this.txtWatchID_TextChanged);
             // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDiscount.Enabled = false;
+            this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiscount.Location = new System.Drawing.Point(1060, 353);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(223, 29);
+            this.txtDiscount.TabIndex = 9;
+            this.txtDiscount.Text = "0";
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,5 +414,6 @@ namespace ADKT_SellsWatch.Forms_Design
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTotalPrice;
+        private System.Windows.Forms.TextBox txtDiscount;
     }
 }

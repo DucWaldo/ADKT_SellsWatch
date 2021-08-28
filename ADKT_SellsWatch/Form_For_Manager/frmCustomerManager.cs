@@ -59,7 +59,7 @@ namespace ADKT_SellsWatch.Form_For_Manager
 
         private void dgvMembership_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            if (e.RowIndex > -1 && e.ColumnIndex > -1 && dgvMembership.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 string ID = dgvMembership.Rows[e.RowIndex].Cells[0].Value.ToString();
                 string NAME = dgvMembership.Rows[e.RowIndex].Cells[1].Value.ToString();
