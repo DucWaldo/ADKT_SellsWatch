@@ -105,6 +105,7 @@ namespace ADKT_SellsWatch.Forms_Code.Form_Sales
                 if (checkCus(txtCustomerID) == true)
                 {
                     MessageBox.Show("Đã có khách hàng này!");
+                    
                     btnPay.Enabled = true;
                 }
                 else

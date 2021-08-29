@@ -57,7 +57,7 @@ namespace ADKT_SellsWatch.Forms_Design
             this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.nudNumOfItem = new System.Windows.Forms.NumericUpDown();
             this.txtWatchID = new System.Windows.Forms.TextBox();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceipt)).BeginInit();
@@ -134,7 +134,7 @@ namespace ADKT_SellsWatch.Forms_Design
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtDiscount);
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.btnPay);
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.txtTotalPrice);
@@ -154,7 +154,7 @@ namespace ADKT_SellsWatch.Forms_Design
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(129, 39);
             this.btnPay.TabIndex = 8;
-            this.btnPay.Text = "Chốt đơn";
+            this.btnPay.Text = "Thanh toán";
             this.btnPay.UseVisualStyleBackColor = true;
             this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
@@ -174,9 +174,9 @@ namespace ADKT_SellsWatch.Forms_Design
             this.txtTotalPrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtTotalPrice.Enabled = false;
             this.txtTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPrice.Location = new System.Drawing.Point(774, 353);
+            this.txtTotalPrice.Location = new System.Drawing.Point(972, 353);
             this.txtTotalPrice.Name = "txtTotalPrice";
-            this.txtTotalPrice.Size = new System.Drawing.Size(280, 29);
+            this.txtTotalPrice.Size = new System.Drawing.Size(152, 29);
             this.txtTotalPrice.TabIndex = 5;
             // 
             // dgvDetails
@@ -350,16 +350,16 @@ namespace ADKT_SellsWatch.Forms_Design
             this.txtWatchID.TabIndex = 0;
             this.txtWatchID.TextChanged += new System.EventHandler(this.txtWatchID_TextChanged);
             // 
-            // txtDiscount
+            // label4
             // 
-            this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDiscount.Enabled = false;
-            this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscount.Location = new System.Drawing.Point(1060, 353);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(223, 29);
-            this.txtDiscount.TabIndex = 9;
-            this.txtDiscount.Text = "0";
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(876, 356);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 24);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Tổng tiền";
             // 
             // frmSales
             // 
@@ -414,6 +414,6 @@ namespace ADKT_SellsWatch.Forms_Design
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTotalPrice;
-        private System.Windows.Forms.TextBox txtDiscount;
+        private System.Windows.Forms.Label label4;
     }
 }
